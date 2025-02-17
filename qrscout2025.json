@@ -177,6 +177,7 @@
           "formResetBehavior": "reset",
           "defaultValue": "_",
           "choices": {
+            "_": "_",
             "A": "A",
             "B": "B",
             "C": "C",
@@ -194,6 +195,7 @@
           "formResetBehavior": "reset",
           "defaultValue": "_",
           "choices": {
+            "_": "_",
             "A": "A",
             "B": "B",
             "C": "C",
@@ -211,6 +213,7 @@
           "formResetBehavior": "reset",
           "defaultValue": "_",
           "choices": {
+            "_": "_",
             "A": "A",
             "B": "B",
             "C": "C",
@@ -228,6 +231,7 @@
           "formResetBehavior": "reset",
           "defaultValue": "_",
           "choices": {
+            "_": "_",
             "A": "A",
             "B": "B",
             "C": "C",
@@ -245,6 +249,7 @@
           "formResetBehavior": "reset",
           "defaultValue": "_",
           "choices": {
+            "_": "_",
             "A": "A",
             "B": "B",
             "C": "C",
@@ -372,4 +377,3 @@
     }
   ]
 }
-
