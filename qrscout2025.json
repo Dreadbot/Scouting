@@ -1,6 +1,7 @@
 {
   "title": "QRScout",
-  "page_title": "Reefscape",
+  "page_title": "Rebuilt 3656",
+  "year": 2026,
   "delimiter": ",",
   "teamNumber": 2713,
   "theme": {
@@ -62,6 +63,17 @@
       "name": "Prematch",
       "fields": [
         {
+          "title": "Match Number",
+          "description": "Enter the match number.",
+          "type": "number",
+          "required": true,
+          "code": "matchNumber",
+          "formResetBehavior": "increment",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 120
+        },
+        {
           "title": "Team Number",
           "description": "The team number of the robot you're scouting.",
           "type": "number",
@@ -73,20 +85,41 @@
           "max": 19999
         },
         {
+          "title": "Scouter Name",
+          "description": "Initials of the scouter.",
+          "type": "text",
+          "required": true,
+          "code": "scouterInitials",
+          "formResetBehavior": "preserve",
+          "defaultValue": " "
+        },
+        {
           "title": "Starting Position",
-          "description": "The starting position of the robot.",
+          "description": "The Starting position of the Robot",
           "type": "select",
           "required": true,
           "code": "Prsp",
           "formResetBehavior": "reset",
           "defaultValue": "",
           "choices": {
-            "Left": "Left",
-            "Left Middle": "Left Middle",
-            "Middle": "Middle",
-            "Right Middle": "Right Middle",
-            "Right": "Right"
+            "OT": "Outpost Trench",
+            "OB": "Outpost Bump",
+            "H": "Hub",
+            "DB": "Depot Bump",
+            "DT": "Depot Trench"
           }
+        },
+        {
+          "title": "Starting Position Layout",
+          "description": "Reference diagram of the field",
+          "type": "image",
+          "required": false,
+          "code": "fieldLayout",
+          "formResetBehavior": "preserve",
+          "defaultValue": "https://raw.githubusercontent.com/Dreadbot/Scouting/2026/Starting%20Position%20Diagram.jpg",
+          "width": 400,
+          "height": 300,
+          "alt": "2024 FRC Field Layout Diagram"
         }
       ]
     },
@@ -94,168 +127,85 @@
       "name": "Autonomous",
       "fields": [
         {
-          "title": "Left Starting Zone",
-          "description": "Robots Bumpers are fully out of Starting Zone.",
-          "type": "boolean",
+          "title": "Zone Layout",
+          "description": "Reference diagram of the field",
+          "type": "image",
           "required": false,
-          "code": "LTSZ",
-          "formResetBehavior": "reset",
-          "defaultValue": false
+          "code": "fieldLayout",
+          "formResetBehavior": "preserve",
+          "defaultValue": "https://raw.githubusercontent.com/Dreadbot/Scouting/2026/Zone%20Diagram.jpg",
+          "width": 400,
+          "height": 300,
+          "alt": "2024 FRC Field Layout Diagram"
         },
         {
-          "title": "Coral L1 Scored",
-          "description": "The number of level 1 coral scored during autonomous.",
-          "type": "counter",
+          "title": "Auton Locations",
+          "type": "multi-select",
           "required": false,
-          "code": "CLOA",
+          "code": "autonLocations",
           "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Coral L2 Scored",
-          "description": "The number of level 2 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLTA",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Coral L3 Scored",
-          "description": "The number of level 3 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLThA",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Coral L4 Scored",
-          "description": "The number of level 4 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLFA",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Barge Algae Scored",
-          "description": "The number of Algae scored in the barge during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "BASA",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Processor Algae Scored",
-          "description": "The number of Algae scored in the processor during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "PASA",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "1st Score",
-          "description": "The first face Coral is scored on",
-          "type": "select",
-          "required": false,
-          "code": "S1",
-          "formResetBehavior": "reset",
-          "defaultValue": "_",
           "choices": {
-            "_": "_",
-            "A": "A",
-            "B": "B",
-            "C": "C",
-            "D": "D",
-            "E": "E",
-            "F": "F"
+            "NZ": "Neutral Zone",
+            "DP": "Depot",
+            "OP": "Outpost"
           }
         },
         {
-          "title": "2nd Score",
-          "description": "The Second face Coral is scored on",
-          "type": "select",
+          "title": "+1 Fuel",
+          "description": "Fuel Scored during Auton",
+          "type": "counter",
           "required": false,
-          "code": "S2",
+          "code": "1fsda",
           "formResetBehavior": "reset",
-          "defaultValue": "_",
-          "choices": {
-            "_": "_",
-            "A": "A",
-            "B": "B",
-            "C": "C",
-            "D": "D",
-            "E": "E",
-            "F": "F"
-          }
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
         },
         {
-          "title": "3rd Score",
-          "description": "The Third face Coral is scored on",
-          "type": "select",
+          "title": "+5 Fuel",
+          "description": "Fuel Scored during Auton",
+          "type": "counter",
           "required": false,
-          "code": "S3",
+          "code": "5fsda",
           "formResetBehavior": "reset",
-          "defaultValue": "_",
-          "choices": {
-            "_": "_",
-            "A": "A",
-            "B": "B",
-            "C": "C",
-            "D": "D",
-            "E": "E",
-            "F": "F"
-          }
+          "defaultValue": 0,
+          "min": 0,
+          "step": 5
         },
         {
-          "title": "4th Score",
-          "description": "The Fourth face Coral is scored on",
-          "type": "select",
+          "title": "+10 Fuel",
+          "description": "Fuel Scored during Auton",
+          "type": "counter",
           "required": false,
-          "code": "S4",
+          "code": "10fsda",
           "formResetBehavior": "reset",
-          "defaultValue": "_",
-          "choices": {
-            "_": "_",
-            "A": "A",
-            "B": "B",
-            "C": "C",
-            "D": "D",
-            "E": "E",
-            "F": "F"
-          }
+          "defaultValue": 0,
+          "min": 0,
+          "step": 10
         },
         {
-          "title": "5th Score",
-          "description": "The Fifth face Coral is scored on",
-          "type": "select",
+          "title": "+20 Fuel",
+          "description": "Fuel Scored during Auton",
+          "type": "counter",
           "required": false,
-          "code": "S5",
+          "code": "20fsda",
           "formResetBehavior": "reset",
-          "defaultValue": "_",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 20
+        },
+        {
+          "title": "Auton Climb",
+          "type": "select",
+          "required": true,
+          "code": "AC",
+          "formResetBehavior": "reset",
+          "defaultValue": "No",
           "choices": {
-            "_": "_",
-            "A": "A",
-            "B": "B",
-            "C": "C",
-            "D": "D",
-            "E": "E",
-            "F": "F"
+            "No Climb": "No Climb",
+            "Outpost": "Outpost",
+            "Middle": "Middle",
+            "Depot": "Depot"
           }
         }
       ]
@@ -264,77 +214,45 @@
       "name": "Teleop",
       "fields": [
         {
-          "title": "Dislodged Algae?",
-          "type": "boolean",
-          "required": false,
-          "code": "daT",
-          "formResetBehavior": "reset",
-          "defaultValue": false
-        },
-        {
-          "title": "Coral L1 Scored",
-          "description": "The number of level 1 coral scored during autonomous.",
+          "title": "+5 Fuel",
           "type": "counter",
           "required": false,
-          "code": "CLOT",
+          "code": "5fsdt",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
-          "step": 1
+          "step": 5
         },
         {
-          "title": "Coral L2 Scored",
-          "description": "The number of level 2 coral scored during autonomous.",
+          "title": "+10 Fuel",
           "type": "counter",
           "required": false,
-          "code": "CLTT",
+          "code": "10fsdt",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
-          "step": 1
+          "step": 10
         },
         {
-          "title": "Coral L3 Scored",
-          "description": "The number of level 3 coral scored during autonomous.",
+          "title": "+20 Fuel",
           "type": "counter",
           "required": false,
-          "code": "CLThT",
+          "code": "20fsdt",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
-          "step": 1
+          "step": 20
         },
         {
-          "title": "Coral L4 Scored",
-          "description": "The number of level 4 coral scored during autonomous.",
-          "type": "counter",
+          "title": "Defensive Skill",
+          "description": "1: had no success in slowing down opponents, 2: had slight success, but not super effective, 3: slowed down robots, effective on one, less effective defending multiple, 4: Highly effective on one, effective slowing down multiple robots, 5: Extremely effective on one, highly effective on multiple robots",
+          "type": "range",
           "required": false,
-          "code": "CLFT",
+          "code": "DS",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Barge Algae Scored",
-          "description": "The number of Algae scored in the barge during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "BAST",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Processor Algae Scored",
-          "description": "The number of Algae scored in the processor during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "PAST",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
+          "max": 5,
           "step": 1
         }
       ]
@@ -348,14 +266,23 @@
           "required": true,
           "code": "epo",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": "No",
           "choices": {
-            "P": "Parked",
-            "S": "Shallow Climb",
-            "D": "Deep Climb",
-            "N": "Nothing",
-            "F": "Failed Climb"
+            "No": "No Climb",
+            "L1": "L1",
+            "L2": "L2",
+            "L3": "L3"
           }
+        },
+        {
+          "title": "Climb Time",
+          "description": "Time taken to complete climb",
+          "type": "timer",
+          "required": false,
+          "code": "climbTime",
+          "formResetBehavior": "reset",
+          "defaultValue": 0,
+          "outputType": "average"
         }
       ]
     },
@@ -363,15 +290,25 @@
       "name": "Postmatch",
       "fields": [
         {
+          "title": "Inactive Phase",
+          "description": "What did they do during the inactive phase",
+          "type": "text",
+          "required": true,
+          "code": "IP",
+          "formResetBehavior": "reset",
+          "defaultValue": "",
+          "min": 0,
+          "max": 50
+        },
+        {
           "title": "Comments",
-          "description": "Did they play good defense, robot break, got a lot of penalties, missed a lot of scores, etc.",
           "type": "text",
           "required": false,
           "code": "co",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": " ",
           "min": 0,
-          "max": 100
+          "max": 50
         }
       ]
     }
