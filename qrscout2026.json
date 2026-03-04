@@ -2,7 +2,7 @@
   "title": "QRScout",
   "page_title": "Rebuilt 3656",
   "year": 2026,
-  "delimiter": ",",
+  "delimiter": "|",
   "teamNumber": 2713,
   "theme": {
     "light": {
