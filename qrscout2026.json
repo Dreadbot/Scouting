@@ -200,7 +200,7 @@
           "required": true,
           "code": "AC",
           "formResetBehavior": "reset",
-          "defaultValue": "No",
+          "defaultValue": "No Climb",
           "choices": {
             "No Climb": "No Climb",
             "Outpost": "Outpost",
@@ -242,18 +242,6 @@
           "defaultValue": 0,
           "min": 0,
           "step": 20
-        },
-        {
-          "title": "Defensive Skill",
-          "description": "1: had no success in slowing down opponents, 2: had slight success, but not super effective, 3: slowed down robots, effective on one, less effective defending multiple, 4: Highly effective on one, effective slowing down multiple robots, 5: Extremely effective on one, highly effective on multiple robots",
-          "type": "range",
-          "required": false,
-          "code": "DS",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "min": 0,
-          "max": 5,
-          "step": 1
         }
       ]
     },
@@ -273,16 +261,6 @@
             "L2": "L2",
             "L3": "L3"
           }
-        },
-        {
-          "title": "Climb Time",
-          "description": "Time taken to complete climb",
-          "type": "timer",
-          "required": false,
-          "code": "climbTime",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "outputType": "average"
         }
       ]
     },
@@ -298,7 +276,7 @@
           "formResetBehavior": "reset",
           "defaultValue": "",
           "min": 0,
-          "max": 50
+          "max": 150
         },
         {
           "title": "Comments",
@@ -308,7 +286,7 @@
           "formResetBehavior": "reset",
           "defaultValue": " ",
           "min": 0,
-          "max": 50
+          "max": 150
         }
       ]
     }
